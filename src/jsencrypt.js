@@ -413,6 +413,24 @@ JSEncrypt.prototype.decrypt = function (string) {
 };
 
 /**
+ * Proxy method for RSAKey object's decryptNoPadding, decrypt the string using the private
+ * components of the rsa key object. Note that if the object was not set will be created
+ * on the fly (by the getKey method) using the parameters passed in the JSEncrypt constructor
+ * @param {string} string base64 encoded crypted string to decrypt
+ * @return {string} the decrypted string
+ * @public
+ */
+JSEncrypt.prototype.decryptNoPadding = function (string) {
+  // Return the decrypted string.
+  try {
+    return this.getKey().decryptNoPadding(b64tohex(string));
+  }
+  catch (ex) {
+    return false;
+  }
+};
+
+/**
  * Proxy method for RSAKey object's encrypt, encrypt the string using the public
  * components of the rsa key object. Note that if the object was not set will be created
  * on the fly (by the getKey method) using the parameters passed in the JSEncrypt constructor
@@ -497,4 +515,3 @@ JSEncrypt.prototype.getPublicKeyB64 = function () {
   // Return the private representation of this key.
   return this.getKey().getPublicBaseKeyB64();
 };
-

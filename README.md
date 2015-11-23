@@ -165,3 +165,12 @@ exponent2 => dmq1
 coefficient => coeff
 ```
 
+Testing
+================
+
+Run a local web server in the root directory of the repository.
+Example:
+
+    python -m SimpleHTTPServer 8000
+
+Go to http://localhost:8000 and click Test.
